@@ -29,4 +29,24 @@ describe('InputsTestPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('testInputOne binding', () => {
+    let input;
+    beforeEach(
+      fakeAsync(() => {
+        component.ngOnInit();
+        fixture.detectChanges();
+        tick();
+        const ionInput = fixture.debugElement.query(By.css('#inputOne'));
+        input = ionInput.query(By.css('input')).nativeElement;
+      })
+    );
+
+    it('should reflect changes to the input', () => {
+      expect(input).toBeTruthy();
+      input.value = 'Frank';
+      input.dispatchEvent(new Event('input'));
+      expect(component.testInputOne).toEqual('Frank');
+    });
+  });
 });
