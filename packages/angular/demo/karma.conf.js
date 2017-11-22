@@ -23,7 +23,7 @@ module.exports = function(config) {
       environment: 'dev'
     },
     files: [
-      { pattern: 'node_modules/@ionic/core/dist/ionic.js', watched: false }
+      { pattern: '../node_modules/@ionic/core/dist/ionic.js', watched: false, served: false, nocache: true, included: true }
     ],
     reporters: ['progress', 'kjhtml'],
     port: 9876,
