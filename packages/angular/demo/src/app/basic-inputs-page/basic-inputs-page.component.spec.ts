@@ -37,8 +37,11 @@ describe('InputsTestPageComponent', () => {
         component.ngOnInit();
         fixture.detectChanges();
         tick();
-        const ionInput = fixture.debugElement.query(By.css('#inputOne'));
-        input = ionInput.query(By.css('input')).nativeElement;
+        input = fixture.debugElement.query(By.css('#stdTextInput')).nativeElement;
+        // This is what I ultimtely want to test...
+        //
+        // const ionInput = fixture.debugElement.query(By.css('#ionTextInput'));
+        // input = ionInput.query(By.css('input')).nativeElement;
       })
     );
 
@@ -46,7 +49,7 @@ describe('InputsTestPageComponent', () => {
       expect(input).toBeTruthy();
       input.value = 'Frank';
       input.dispatchEvent(new Event('input'));
-      expect(component.testInputOne).toEqual('Frank');
+      expect(component.textValue).toEqual('Frank');
     });
   });
 });
