@@ -61,25 +61,26 @@ describe('Group Inputs Page', () => {
       expect(btns.tongue.getAttribute('checked')).toEqual(null);
     });
 
-    // it('should reflect back the changed value', (done) => {
-    //   page.navigateTo();
-    //   browser.executeScript('window.scrollTo(0, 500);').then(function() {
-    //     const btns = page.getUngroupedRadioButtons();
-    //     btns.chicken.click();
-    //     expect(page.getRadioOutputText()).toEqual('chicken');
-    //     done();
-    //   });
-    // });
+    it('should reflect back the changed value', () => {
+      page.navigateTo();
+      return browser.executeScript('window.scrollTo(0, 500);').then(function() {
+        const btns = page.getUngroupedRadioButtons();
+        btns.chicken.click();
+        expect(page.getRadioOutputText()).toEqual('chicken');
+      });
+    });
 
-    // it('should check and uncheck the proper buttons on a changed value', () => {
-    //   page.navigateTo();
-    //   const btns = page.getUngroupedRadioButtons();
-    //   btns.chicken.click();
-    //   expect(btns.chicken.getAttribute('checked')).toEqual('true');
-    //   expect(btns.beef.getAttribute('checked')).toEqual(null);
-    //   expect(btns.tripe.getAttribute('checked')).toEqual(null);
-    //   expect(btns.brains.getAttribute('checked')).toEqual(null);
-    //   expect(btns.tongue.getAttribute('checked')).toEqual(null);
-    // });
+    it('should check and uncheck the proper buttons on a changed value', () => {
+      page.navigateTo();
+      return browser.executeScript('window.scrollTo(0, 500);').then(function() {
+        const btns = page.getUngroupedRadioButtons();
+        btns.chicken.click();
+        expect(btns.chicken.getAttribute('checked')).toEqual('true');
+        expect(btns.beef.getAttribute('checked')).toEqual(null);
+        expect(btns.tripe.getAttribute('checked')).toEqual(null);
+        expect(btns.brains.getAttribute('checked')).toEqual(null);
+        expect(btns.tongue.getAttribute('checked')).toEqual(null);
+      });
+    });
   });
 });
